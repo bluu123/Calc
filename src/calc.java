@@ -1,7 +1,8 @@
 import java.util.Scanner;
+import java.io.IOException;
 
 public class calc {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         int a = 0, b = 0, c = 0;
         boolean q1 = false, q2 = false;
         String[] roman = {"O", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
@@ -17,26 +18,25 @@ public class calc {
         String op = in.nextLine();
         String[] strings = op.split(" ");
         if (strings.length == 3) {
-        sa = strings[0];
-        sb = strings[2];
-        for (String str:roman2){
-            if (sa.equals(str)){
-                q1 = true;
+            sa = strings[0];
+            sb = strings[2];
+            for (String str : roman2) {
+                if (sa.equals(str)) {
+                    q1 = true;
+                }
             }
-        }
-            for (String str:roman2){
-                if (sb.equals(str)){
+            for (String str : roman2) {
+                if (sb.equals(str)) {
                     q2 = true;
                 }
             }
 
 
-            if ((q1 == false) && (q2 == false)){
+            if ((q1 == false) && (q2 == false)) {
                 a = Integer.parseInt(sa);
                 b = Integer.parseInt(sb);
             }
-            if ((q1 == true) && (q2 == true))
-            {
+            if ((q1 == true) && (q2 == true)) {
                 a = Roma.valueOf(sa).getTr();
                 b = Roma.valueOf(sb).getTr();
             }
@@ -55,19 +55,18 @@ public class calc {
                         c = a / b;
                         break;
                     default: {
-                        System.out.println("Ошибка");
-                        q3 = true;
+                        throw new IOException();
                     }
                 }
-            }else {System.out.println("Ошибка");}
-            if ((q1 == true) && (q2 == true)&&(c>=1)) {
-                System.out.println(roman[c]);
-            }else {System.out.println("Ошибка");
-            }
-            if ((q1 == false) && (q2 == false)) {
-                System.out.println(c);
-            }
+            } else {throw new IOException();}
+        }else { throw new IOException();}
+        if ((q1 == true) && (q2 == true) && (c >= 1)) {
+            System.out.println(roman[c]);
+        }else if((q1 == true) && (q2 == true)) {throw new IOException();}
 
+        if ((q1 == false) && (q2 == false)) {
+            System.out.println(c);
         }
     }
 }
+

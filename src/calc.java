@@ -23,11 +23,13 @@ public class calc {
             for (String str : roman2) {
                 if (sa.equals(str)) {
                     q1 = true;
+                    break;
                 }
             }
             for (String str : roman2) {
                 if (sb.equals(str)) {
                     q2 = true;
+                    break;
                 }
             }
 
@@ -60,11 +62,11 @@ public class calc {
                 }
             } else {throw new IOException();}
         }else { throw new IOException();}
-        if ((q1 == true) && (q2 == true) && (c >= 1)) {
+        if ((q1) && (q2) && (c >= 1)) {
             System.out.println(roman[c]);
-        }else if((q1 == true) && (q2 == true)) {throw new IOException();}
+        }else if((q1) && (q2)) {throw new IOException();}
 
-        if ((q1 == false) && (q2 == false)) {
+        if ((!q1) && (!q2)) {
             System.out.println(c);
         }
     }
